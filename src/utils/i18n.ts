@@ -1,21 +1,8 @@
-import { Platform, NativeModules } from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 
-const getDeviceLanguage = () => {
-  try {
-    const deviceLanguage =
-      Platform.OS === 'ios'
-        ? NativeModules.SettingsManager.settings.AppleLocale ||
-          NativeModules.SettingsManager.settings.AppleLanguages[0]
-        : NativeModules.I18nManager.localeIdentifier;
-
-    return deviceLanguage ? deviceLanguage.substring(0, 2).toLowerCase() : 'en';
-  } catch (error) {
-    return 'en' + error;
-  }
-};
-
-const lang = getDeviceLanguage();
-const isEnglish = lang !== 'es';
+const locales = RNLocalize.getLocales();
+const languageCode = locales[0]?.languageCode; // Retorna 'es', 'en', etc.
+const isEnglish = languageCode !== 'es';
 
 export const texts = {
   navigation: {
