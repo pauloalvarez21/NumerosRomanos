@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+  Image,
+} from 'react-native';
 import { useColors } from '../styles/commonStyles';
 import Card from '../components/Card';
+import { texts } from '../utils/i18n';
 
 const InfoScreen = () => {
   const colors = useColors();
@@ -104,6 +112,40 @@ const InfoScreen = () => {
     },
     exampleContent: {
       gap: 4,
+    },
+    footer: {
+      alignItems: 'center',
+      paddingTop: 20,
+      borderTopWidth: 1,
+      borderTopColor: '#E0E0E0',
+    },
+    footerText: {
+      fontSize: 12,
+      color: '#666',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerSubtext: {
+      fontSize: 11,
+      color: '#999',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerVersion: {
+      fontSize: 10,
+      color: '#BBB',
+      textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerLogo: {
+      width: 150,
+      height: 150,
+      marginTop: 16,
+      marginBottom: 32,
+      resizeMode: 'contain',
+      borderRadius: 30,
     },
   });
 
@@ -353,6 +395,16 @@ const InfoScreen = () => {
             )}
           </View>
         ))}
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
+          <Text style={styles.footerVersion}>v1.0.0</Text>
+          <Image
+            source={require('../assets/images/gaelectronica.png')}
+            style={styles.footerLogo}
+          />
+        </View>
       </ScrollView>
     </View>
   );

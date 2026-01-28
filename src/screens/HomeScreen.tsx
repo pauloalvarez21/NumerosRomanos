@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { useColors } from '../styles/commonStyles';
 import Card from '../components/Card';
+import { texts } from '../utils/i18n';
 
 const HomeScreen = () => {
   const colors = useColors();
@@ -28,7 +29,6 @@ const HomeScreen = () => {
       color: colors.lightText,
       textAlign: 'center',
       marginBottom: 32,
-      fontFamily: 'ChowFun-Regular',
     },
     section: {
       marginBottom: 28,
@@ -61,50 +61,75 @@ const HomeScreen = () => {
     exampleContent: {
       gap: 4,
     },
+    footer: {
+      alignItems: 'center',
+      paddingTop: 20,
+      borderTopWidth: 1,
+      borderTopColor: '#E0E0E0',
+    },
+    footerText: {
+      fontSize: 12,
+      color: '#666',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerSubtext: {
+      fontSize: 11,
+      color: '#999',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerVersion: {
+      fontSize: 10,
+      color: '#BBB',
+      textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerLogo: {
+      width: 150,
+      height: 150,
+      marginTop: 16,
+      marginBottom: 32,
+      resizeMode: 'contain',
+      borderRadius: 30,
+    },
   });
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContent}>
-        <Text style={styles.title}>Números Romanos</Text>
-        <Text style={styles.subtitle}>Convertidor & Información</Text>
+        <Text style={styles.title}>{texts.title}</Text>
+        <Text style={styles.subtitle}>{texts.subtitle}</Text>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>¡Bienvenido!</Text>
+          <Text style={styles.sectionTitle}>{texts.welcome.title}</Text>
           <Text style={styles.sectionText}>
-            Esta aplicación te permite convertir números{' '}
-            <Text style={styles.highlight}>árabes a romanos</Text> y{' '}
-            <Text style={styles.highlight}>romanos a árabes</Text> de forma
-            rápida y sencilla.
+            {texts.welcome.text1}
+            <Text style={styles.highlight}>{texts.welcome.highlight1}</Text>
+            {texts.welcome.text2}
+            <Text style={styles.highlight}>{texts.welcome.highlight2}</Text>
+            {texts.welcome.text3}
           </Text>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Características</Text>
-          <Card variant="feature" title="🔄 Conversión Bidireccional">
-            <Text style={styles.featureText}>
-              Convierte números árabes (1-3999) a romanos y viceversa.
-            </Text>
+          <Text style={styles.sectionTitle}>{texts.features.title}</Text>
+          <Card variant="feature" title={texts.features.f1.title}>
+            <Text style={styles.featureText}>{texts.features.f1.text}</Text>
           </Card>
-          <Card variant="feature" title="📚 Información Detallada">
-            <Text style={styles.featureText}>
-              Aprende cómo funcionan los números romanos con ejemplos prácticos.
-            </Text>
+          <Card variant="feature" title={texts.features.f2.title}>
+            <Text style={styles.featureText}>{texts.features.f2.text}</Text>
           </Card>
-          <Card variant="feature" title="✨ Interfaz Intuitiva">
-            <Text style={styles.featureText}>
-              Diseño simple y fácil de usar para todas las edades.
-            </Text>
+          <Card variant="feature" title={texts.features.f3.title}>
+            <Text style={styles.featureText}>{texts.features.f3.text}</Text>
           </Card>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>¿Qué son los números romanos?</Text>
-          <Text style={styles.sectionText}>
-            Los números romanos son un sistema de numeración que se originó en
-            la antigua Roma. Se utilizan letras mayúsculas para representar
-            valores numéricos específicos.
-          </Text>
+          <Text style={styles.sectionTitle}>{texts.whatAre.title}</Text>
+          <Text style={styles.sectionText}>{texts.whatAre.text}</Text>
           <Card variant="example">
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>I = 1 V = 5 X = 10</Text>
@@ -115,7 +140,7 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Ejemplos Rápidos</Text>
+          <Text style={styles.sectionTitle}>{texts.examples.title}</Text>
           <Card variant="example">
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>3 = III</Text>
@@ -127,12 +152,22 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Rango de Números</Text>
+          <Text style={styles.sectionTitle}>{texts.range.title}</Text>
           <Text style={styles.sectionText}>
-            Esta aplicación puede convertir números del{' '}
-            <Text style={styles.highlight}>1 al 3999</Text>. Estos números
-            cubren la mayoría de casos de uso comunes de los números romanos.
+            {texts.range.text1}
+            <Text style={styles.highlight}>{texts.range.highlight}</Text>
+            {texts.range.text2}
           </Text>
+        </View>
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
+          <Text style={styles.footerVersion}>v1.0.0</Text>
+          <Image
+            source={require('../assets/images/gaelectronica.png')}
+            style={styles.footerLogo}
+          />
         </View>
       </ScrollView>
     </View>

@@ -7,9 +7,11 @@ import {
   TextInput,
   Pressable,
   Alert,
+  Image,
 } from 'react-native';
 import { useColors } from '../styles/commonStyles';
 import { arabicToRoman, romanToArabic } from '../utils/romanConvert';
+import { texts } from '../utils/i18n';
 
 type ConversionMode = 'arabic-to-roman' | 'roman-to-arabic';
 
@@ -233,6 +235,40 @@ const ConversionScreen = () => {
       color: colors.primary,
       marginBottom: 8,
     },
+    footer: {
+      alignItems: 'center',
+      paddingTop: 20,
+      borderTopWidth: 1,
+      borderTopColor: '#E0E0E0',
+    },
+    footerText: {
+      fontSize: 12,
+      color: '#666',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerSubtext: {
+      fontSize: 11,
+      color: '#999',
+      textAlign: 'center',
+      marginBottom: 8,
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerVersion: {
+      fontSize: 10,
+      color: '#BBB',
+      textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
+    },
+    footerLogo: {
+      width: 150,
+      height: 150,
+      marginTop: 16,
+      marginBottom: 32,
+      resizeMode: 'contain',
+      borderRadius: 30,
+    },
   });
 
   const renderInfoBox = () => (
@@ -364,6 +400,16 @@ const ConversionScreen = () => {
 
         {/* Info Box */}
         {renderInfoBox()}
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
+          <Text style={styles.footerVersion}>v1.0.0</Text>
+          <Image
+            source={require('../assets/images/gaelectronica.png')}
+            style={styles.footerLogo}
+          />
+        </View>
       </ScrollView>
     </View>
   );
