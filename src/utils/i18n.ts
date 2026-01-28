@@ -8,14 +8,14 @@ const getDeviceLanguage = () => {
           NativeModules.SettingsManager.settings.AppleLanguages[0]
         : NativeModules.I18nManager.localeIdentifier;
 
-    return deviceLanguage ? deviceLanguage.substring(0, 2) : 'es';
+    return deviceLanguage ? deviceLanguage.substring(0, 2) : 'en';
   } catch (error) {
-    return 'es' + error;
+    return 'en' + error;
   }
 };
 
 const lang = getDeviceLanguage();
-const isEnglish = lang === 'en';
+const isEnglish = lang !== 'es';
 
 export const texts = {
   title: isEnglish ? 'Roman Numerals' : 'Números Romanos',
@@ -78,10 +78,10 @@ export const texts = {
   },
   footer: {
     rights: isEnglish
-      ? "'© 2026 Gaelectronica - All rights reserved'"
-      : "'© 2026 Gaelectronica - Todos los derechos reservados'",
+      ? "© 2026 Gaelectronica - All rights reserved"
+      : "© 2026 Gaelectronica - Todos los derechos reservados",
     subtext: isEnglish
-      ? "'Roman numeral conversion tool'"
-      : "'Herramienta para conversión de números romanos'",
+      ? "Roman numeral conversion tool"
+      : "Herramienta para conversión de números romanos",
   },
 };
