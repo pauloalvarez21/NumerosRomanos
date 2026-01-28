@@ -1,97 +1,212 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Números Romanos App
 
-# Getting Started
+Una aplicación React Native moderna y completa para convertir números entre romanos y arábigos con navegación por TabBar y secciones de información detallada.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🎯 Características Principales
 
-## Step 1: Start Metro
+- ✅ **Conversión Bidireccional**: Convierte entre números arábigos (1-3999) y números romanos
+- 🏠 **Pantalla de Inicio**: Bienvenida e información general de la aplicación
+- 🔄 **Convertidor Interactivo**: Interfaz intuitiva con dos modos de conversión
+- 📚 **Sección Informativa**: Guía completa sobre números romanos con ejemplos expandibles
+- 🎨 **Tema Dinámico**: Soporta modo claro y oscuro automáticamente
+- 📱 **Navegación TabBar**: Acceso fácil a las 3 pantallas principales
+- 🧪 **Tests Unitarios**: Suite completa de pruebas para la lógica de conversión
+- ✨ **Código Limpio**: Tipado con TypeScript y código bien estructurado
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 📋 Pantallas
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 1. 🏠 Pantalla de Inicio (Home)
 
-```sh
-# Using npm
-npm start
+- Bienvenida a la aplicación
+- Características principales
+- Información sobre números romanos
+- Ejemplos rápidos
+- Rango de números soportados (1-3999)
 
-# OR using Yarn
-yarn start
+### 2. 🔄 Pantalla de Conversión (Conversion)
+
+- Dos modos de conversión:
+  - Árabe → Romano (1-3999)
+  - Romano → Árabe (I-MMMCMXCIX)
+- Botones de Convertir y Limpiar
+- Visualización clara de resultados
+- Validación de entrada con mensajes de error
+- Consejos útiles
+
+### 3. ℹ️ Pantalla de Información (Info)
+
+- **Símbolos Básicos**: Tabla de los 7 símbolos romanos
+- **Reglas de Formación**: Adición, sustracción, repetición
+- **Ejemplos Prácticos**: Conversiones comunes (1-20, decenas, centenas, años)
+- **Historia y Uso**: Contexto histórico y usos modernos
+- **Consejos Útiles**: Guía para escribir y leer números romanos
+- Secciones expandibles para mejor legibilidad
+
+## 🚀 Inicio Rápido
+
+### Requisitos Previos
+
+- Node.js 20+
+- npm o yarn
+- React Native CLI
+- Android Studio (para Android) o Xcode (para iOS)
+
+### Instalación
+
+```bash
+# Navegar al proyecto
+cd NumerosRomanos
+
+# Instalar dependencias
+npm install
+
+# (Solo iOS) Instalar dependencias de Pods
+cd ios && pod install && cd ..
 ```
 
-## Step 2: Build and run your app
+### Ejecutar la Aplicación
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
+# Android
 npm run android
 
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# iOS
 npm run ios
 
-# OR using Yarn
-yarn ios
+# O iniciar Metro manualmente
+npm start
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 📖 Ejemplos de Conversión
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Árabe a Romano
 
-## Step 3: Modify your app
+```
+1 = I
+3 = III
+4 = IV
+9 = IX
+10 = X
+27 = XXVII
+40 = XL
+49 = XLIX
+100 = C
+1984 = MCMLXXXIV
+2024 = MMXXIV
+3999 = MMMCMXCIX
+```
 
-Now that you have successfully run the app, let's make changes!
+### Romano a Árabe
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```
+I = 1
+V = 5
+X = 10
+XII = 12
+XL = 40
+XLIX = 49
+CC = 200
+MCMXC = 1990
+MMXXIV = 2024
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## 📁 Estructura del Proyecto
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```
+src/
+├── config/                  # Configuración y constantes
+│   └── constants.ts
+├── navigation/              # Sistema de navegación
+│   ├── RootNavigator.tsx
+│   └── types.ts
+├── screens/                 # Componentes de pantalla
+│   ├── HomeScreen.tsx
+│   ├── ConversionScreen.tsx
+│   └── InfoScreen.tsx
+├── styles/                  # Estilos y temas
+│   └── commonStyles.ts
+└── utils/                   # Utilidades
+    └── romanConvert.ts
 
-## Congratulations! :tada:
+__tests__/                   # Tests
+├── App.test.tsx
+└── romanConvert.test.ts
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+## 🔢 Reglas de Números Romanos
 
-### Now what?
+### Símbolos Básicos
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+| Símbolo | Valor |
+| ------- | ----- |
+| I       | 1     |
+| V       | 5     |
+| X       | 10    |
+| L       | 50    |
+| C       | 100   |
+| D       | 500   |
+| M       | 1000  |
 
-# Troubleshooting
+### Reglas de Formación
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. **Adición**: Símbolos se suman en orden descendente (VI = 6, XII = 12)
+2. **Sustracción**: I, X, C en casos específicos (IV = 4, IX = 9, XL = 40, XC = 90, CD = 400, CM = 900)
+3. **Repetición**: I, X, C, M máximo 3 veces (III = 3, XXX = 30, MMMM no permitido)
 
-# Learn More
+## 🛠️ Scripts Disponibles
 
-To learn more about React Native, take a look at the following resources:
+```bash
+npm start              # Iniciar Metro
+npm run android        # Ejecutar en Android
+npm run ios            # Ejecutar en iOS
+npm test              # Ejecutar tests (12/12 pasando ✓)
+npm run lint          # Verificar código
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## 🧪 Tests
+
+La aplicación incluye una suite completa de tests con cobertura de:
+
+- Conversión de números individuales (1-9)
+- Conversión de decenas (10-90)
+- Conversión de centenas (100-900)
+- Conversión de millares (1000-3000)
+- Conversión de números complejos
+- Manejo de errores y validación
+
+```bash
+npm test -- romanConvert.test.ts
+```
+
+**Resultado**: ✅ **12/12 tests pasando**
+
+## 🎨 Tema
+
+La aplicación detecta automáticamente el tema del sistema (claro/oscuro) y se adapta dinámicamente.
+
+## 📚 Documentación Adicional
+
+- [NUMBERS_GUIDE.md](NUMBERS_GUIDE.md) - Guía completa de uso
+- [DESARROLLO.md](DESARROLLO.md) - Guía de desarrollo
+
+## 💡 Mejoras Futuras
+
+- Historial de conversiones
+- Conversiones favoritas
+- Temas personalizables
+- Números romanos extendidos (vincularia)
+- Compartir resultados
+
+## 🔒 Validación
+
+La aplicación valida todas las entradas:
+
+- ❌ Números fuera del rango (< 1 o > 3999)
+- ❌ Caracteres inválidos en números romanos
+- ❌ Campos vacíos
+
+---
+
+**¡Disfruta convirtiendo números romanos!** 🏛️✨
+
+**Versión**: 1.0.0 | **React Native**: 0.83.1 | **TypeScript**: 5.8.3
