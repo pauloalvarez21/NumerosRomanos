@@ -48,9 +48,9 @@ const InfoScreen = () => {
     },
     sectionHeaderText: {
       fontSize: 16,
-      fontFamily: 'ChowFun-Regular',
       color: colors.primary,
       flex: 1,
+      fontFamily: 'ChowFun-Regular',
     },
     expandIcon: {
       fontSize: 18,
@@ -124,20 +124,17 @@ const InfoScreen = () => {
       color: '#666',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
     },
     footerSubtext: {
       fontSize: 11,
       color: '#999',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
     },
     footerVersion: {
       fontSize: 10,
       color: '#BBB',
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
     },
     footerLogo: {
       width: 150,
@@ -158,19 +155,19 @@ const InfoScreen = () => {
   const sections: SectionItem[] = [
     {
       id: 'symbols',
-      title: 'Símbolos Básicos',
+      title: texts.info.symbols.title,
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Los números romanos se basan en siete símbolos con valores fijos:
+            {texts.info.symbols.description}
           </Text>
           <View style={styles.tableContainer}>
             <View style={[styles.tableRow, styles.tableRowHeader]}>
               <Text style={[styles.tableCell, styles.tableCellLabel]}>
-                Símbolo
+                {texts.info.symbols.colSymbol}
               </Text>
               <Text style={[styles.tableCell, styles.tableCellLabel]}>
-                Valor
+                {texts.info.symbols.colValue}
               </Text>
             </View>
             <View style={styles.tableRow}>
@@ -209,17 +206,12 @@ const InfoScreen = () => {
     },
     {
       id: 'rules',
-      title: 'Reglas de Formación',
+      title: texts.info.rules.title,
       content: (
         <View>
-          <Text style={styles.sectionText}>
-            Para escribir números romanos correctamente, sigue estas reglas:
-          </Text>
-          <Card variant="rule" title="Adición (Suma)">
-            <Text style={styles.ruleText}>
-              Si una letra está a la derecha de otra de igual o mayor valor, se
-              suma.
-            </Text>
+          <Text style={styles.sectionText}>{texts.info.rules.description}</Text>
+          <Card variant="rule" title={texts.info.rules.additionTitle}>
+            <Text style={styles.ruleText}>{texts.info.rules.additionText}</Text>
             <Card variant="example">
               <View style={styles.exampleContent}>
                 <Text style={styles.exampleText}>VI = 5 + 1 = 6</Text>
@@ -228,10 +220,9 @@ const InfoScreen = () => {
             </Card>
           </Card>
 
-          <Card variant="rule" title="Sustracción (Resta)">
+          <Card variant="rule" title={texts.info.rules.subtractionTitle}>
             <Text style={styles.ruleText}>
-              Si una letra de menor valor está a la izquierda de una mayor, se
-              resta.
+              {texts.info.rules.subtractionText}
             </Text>
             <Card variant="example">
               <View style={styles.exampleContent}>
@@ -245,10 +236,9 @@ const InfoScreen = () => {
             </Card>
           </Card>
 
-          <Card variant="rule" title="Repetición">
+          <Card variant="rule" title={texts.info.rules.repetitionTitle}>
             <Text style={styles.ruleText}>
-              Los símbolos I, X, C y M pueden repetirse hasta tres veces
-              seguidas. V, L y D no se repiten.
+              {texts.info.rules.repetitionText}
             </Text>
             <Card variant="example">
               <View style={styles.exampleContent}>
@@ -263,13 +253,13 @@ const InfoScreen = () => {
     },
     {
       id: 'examples',
-      title: 'Ejemplos Comunes',
+      title: texts.info.examples.title,
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Aquí tienes algunos ejemplos útiles:
+            {texts.info.examples.description}
           </Text>
-          <Card variant="example" title="Números del 1 al 20">
+          <Card variant="example" title={texts.info.examples.range1to20}>
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>
                 I=1, II=2, III=3, IV=4, V=5
@@ -285,7 +275,7 @@ const InfoScreen = () => {
               </Text>
             </View>
           </Card>
-          <Card variant="example" title="Decenas">
+          <Card variant="example" title={texts.info.examples.tens}>
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>
                 X=10, XX=20, XXX=30, XL=40, L=50
@@ -295,7 +285,7 @@ const InfoScreen = () => {
               </Text>
             </View>
           </Card>
-          <Card variant="example" title="Centenas y Millares">
+          <Card variant="example" title={texts.info.examples.bigNumbers}>
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>
                 C=100, CC=200, CCC=300, CD=400, D=500
@@ -305,7 +295,7 @@ const InfoScreen = () => {
               </Text>
             </View>
           </Card>
-          <Card variant="example" title="Años">
+          <Card variant="example" title={texts.info.examples.years}>
             <View style={styles.exampleContent}>
               <Text style={styles.exampleText}>1984 = MCMLXXXIV</Text>
               <Text style={styles.exampleText}>2024 = MMXXIV</Text>
@@ -317,49 +307,40 @@ const InfoScreen = () => {
     },
     {
       id: 'history',
-      title: 'Historia',
+      title: texts.info.history.title,
       content: (
         <View>
           <Text style={styles.sectionText}>
-            El sistema de numeración romana se originó en la antigua Roma y se
-            utilizó en todo el Imperio Romano.
+            {texts.info.history.description}
           </Text>
-          <Card variant="example" title="Usos Modernos">
+          <Card variant="example" title={texts.info.history.modernUses}>
             <View style={styles.exampleContent}>
-              <Text style={styles.exampleText}>• Relojes</Text>
-              <Text style={styles.exampleText}>• Capítulos de libros</Text>
-              <Text style={styles.exampleText}>
-                • Eventos deportivos (Super Bowl)
-              </Text>
-              <Text style={styles.exampleText}>• Nombres de reyes y papas</Text>
+              {texts.info.history.modernUsesList.map((item, index) => (
+                <Text key={index} style={styles.exampleText}>
+                  {item}
+                </Text>
+              ))}
             </View>
           </Card>
           <Text style={styles.sectionText}>
-            Aunque hoy usamos el sistema arábigo, los números romanos siguen
-            presentes en nuestra cultura.
+            {texts.info.history.conclusion}
           </Text>
         </View>
       ),
     },
     {
       id: 'tips',
-      title: 'Consejos',
+      title: texts.info.tips.title,
       content: (
         <View>
-          <Card variant="rule" title="Escritura">
-            <Text style={styles.ruleText}>
-              Descompón el número en millares, centenas, decenas y unidades.
-            </Text>
+          <Card variant="rule" title={texts.info.tips.writingTitle}>
+            <Text style={styles.ruleText}>{texts.info.tips.writingText}</Text>
           </Card>
-          <Card variant="rule" title="Lectura">
-            <Text style={styles.ruleText}>
-              Lee de izquierda a derecha, sumando o restando según la posición.
-            </Text>
+          <Card variant="rule" title={texts.info.tips.readingTitle}>
+            <Text style={styles.ruleText}>{texts.info.tips.readingText}</Text>
           </Card>
-          <Card variant="rule" title="Rango">
-            <Text style={styles.ruleText}>
-              Esta calculadora soporta números del 1 al 3999.
-            </Text>
+          <Card variant="rule" title={texts.info.tips.rangeTitle}>
+            <Text style={styles.ruleText}>{texts.info.tips.rangeText}</Text>
           </Card>
         </View>
       ),
@@ -372,7 +353,7 @@ const InfoScreen = () => {
         style={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.title}>Información</Text>
+        <Text style={styles.title}>{texts.info.title}</Text>
 
         {sections.map(section => (
           <View key={section.id} style={styles.section}>

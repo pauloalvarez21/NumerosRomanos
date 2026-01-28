@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ConversionScreen from '../screens/ConversionScreen';
 import InfoScreen from '../screens/InfoScreen';
 import { useColors } from '../styles/commonStyles';
+import { texts } from '../utils/i18n';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,8 +43,8 @@ const RootNavigator = () => {
           },
           tabBarLabelStyle: {
             fontSize: 12,
-            fontFamily: 'ChowFun-Regular',
             marginBottom: 4,
+            fontFamily: 'ChowFun-Regular',
           },
         }}
       >
@@ -51,7 +52,7 @@ const RootNavigator = () => {
           name="Home"
           component={HomeScreen}
           options={{
-            tabBarLabel: 'Inicio',
+            tabBarLabel: texts.navigation.home,
             tabBarIcon: ({ focused }) => (
               <TabIcon
                 focused={focused}
@@ -64,7 +65,7 @@ const RootNavigator = () => {
           name="Conversion"
           component={ConversionScreen}
           options={{
-            tabBarLabel: 'Convertidor',
+            tabBarLabel: texts.navigation.conversion,
             tabBarIcon: ({ focused }) => (
               <TabIcon
                 focused={focused}
@@ -77,7 +78,7 @@ const RootNavigator = () => {
           name="Info"
           component={InfoScreen}
           options={{
-            tabBarLabel: 'Información',
+            tabBarLabel: texts.navigation.info,
             tabBarIcon: ({ focused }) => (
               <TabIcon
                 focused={focused}

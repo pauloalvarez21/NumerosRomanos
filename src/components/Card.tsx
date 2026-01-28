@@ -33,8 +33,8 @@ const Card = ({ variant = 'feature', title, children }: CardProps) => {
     },
     title: {
       fontSize: 16,
-      fontFamily: 'ChowFun-Regular',
       color: colors.primary,
+      fontFamily: 'ChowFun-Regular',
     },
   });
 
