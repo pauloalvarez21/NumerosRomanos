@@ -76,12 +76,70 @@ export const texts = {
       ? '. These numbers cover most common use cases for Roman numerals.'
       : '. Estos números cubren la mayoría de casos de uso comunes de los números romanos.',
   },
+  conversion: {
+    title: isEnglish ? 'Converter' : 'Convertidor',
+    modeLabel: isEnglish
+      ? 'Select conversion type:'
+      : 'Selecciona el tipo de conversión:',
+    modes: {
+      arabicToRoman: isEnglish ? 'Arabic → Roman' : 'Árabe → Romano',
+      romanToArabic: isEnglish ? 'Roman → Arabic' : 'Romano → Árabe',
+    },
+    inputLabel: {
+      arabic: isEnglish
+        ? 'Enter a number (1-3999)'
+        : 'Ingresa un número (1-3999)',
+      roman: isEnglish ? 'Enter a Roman numeral' : 'Ingresa un número romano',
+    },
+    placeholders: {
+      arabic: isEnglish ? 'Ex: 42' : 'Ej: 42',
+      roman: isEnglish ? 'Ex: XLII' : 'Ej: XLII',
+    },
+    buttons: {
+      convert: isEnglish ? 'Convert' : 'Convertir',
+      clear: isEnglish ? 'Clear' : 'Limpiar',
+    },
+    results: {
+      labelSuccess: isEnglish ? 'Result' : 'Resultado',
+      labelError: isEnglish ? 'Notice' : 'Aviso',
+    },
+    tips: {
+      title: isEnglish ? '💡 Tip' : '💡 Consejo',
+      arabic: isEnglish
+        ? 'Roman numerals are built by combining symbols. Position is important.'
+        : 'Los números romanos se construyen combinando símbolos. La posición es importante.',
+      roman: isEnglish
+        ? 'Roman numerals must be uppercase. Example: VIII, XIV, MCMXC.'
+        : 'Los números romanos deben estar en mayúsculas. Por ejemplo: VIII, XIV, MCMXC.',
+    },
+  },
+  errors: {
+    title: isEnglish ? 'Error' : 'Error',
+    emptyInput: isEnglish
+      ? 'Please enter a value'
+      : 'Por favor ingresa un valor',
+    invalidNumber: isEnglish
+      ? 'Error: Enter a valid number'
+      : 'Error: Ingresa un número válido',
+    range: isEnglish
+      ? 'Error: Number must be between 1 and 3999'
+      : 'Error: El número debe estar entre 1 y 3999',
+    enterRoman: isEnglish
+      ? 'Error: Enter a Roman numeral'
+      : 'Error: Ingresa un número romano',
+    invalidChars: isEnglish
+      ? 'Error: Invalid characters'
+      : 'Error: Caracteres inválidos',
+    resultRange: isEnglish
+      ? 'Error: Result out of range (1-3999)'
+      : 'Error: Resultado fuera de rango (1-3999)',
+  },
   footer: {
     rights: isEnglish
-      ? "© 2026 Gaelectronica - All rights reserved"
-      : "© 2026 Gaelectronica - Todos los derechos reservados",
+      ? '© 2026 Gaelectronica - All rights reserved'
+      : '© 2026 Gaelectronica - Todos los derechos reservados',
     subtext: isEnglish
-      ? "Roman numeral conversion tool"
-      : "Herramienta para conversión de números romanos",
+      ? 'Roman numeral conversion tool'
+      : 'Herramienta para conversión de números romanos',
   },
 };

@@ -1,6 +1,7 @@
 /**
  * Utility functions for converting between Roman and Arabic numerals
  */
+import { texts } from './i18n';
 
 // Mapping of Roman numerals to their values in descending order
 const romanValues = [
@@ -27,7 +28,7 @@ const romanValues = [
 export const arabicToRoman = (num: number): string => {
   // Validate input
   if (!Number.isInteger(num) || num <= 0 || num >= 4000) {
-    return 'Error: El número debe estar entre 1 y 3999';
+    return texts.errors.range;
   }
 
   let result = '';
@@ -53,12 +54,12 @@ export const romanToArabic = (roman: string): number | string => {
   const cleanRoman = roman.trim().toUpperCase();
 
   if (cleanRoman.length === 0) {
-    return 'Error: Ingresa un número romano';
+    return texts.errors.enterRoman;
   }
 
   // Validate that input contains only valid Roman numeral characters
   if (!/^[IVXLCDM]+$/.test(cleanRoman)) {
-    return 'Error: Caracteres inválidos';
+    return texts.errors.invalidChars;
   }
 
   let result = 0;
@@ -80,7 +81,7 @@ export const romanToArabic = (roman: string): number | string => {
 
   // Validate the result (should be between 1 and 3999)
   if (result <= 0 || result >= 4000) {
-    return 'Error: Resultado fuera de rango (1-3999)';
+    return texts.errors.resultRange;
   }
 
   return result;

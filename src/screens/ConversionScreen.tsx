@@ -26,7 +26,7 @@ const ConversionScreen = () => {
 
   const handleConvert = () => {
     if (!input.trim()) {
-      Alert.alert('Error', 'Por favor ingresa un valor');
+      Alert.alert(texts.errors.title, texts.errors.emptyInput);
       return;
     }
 
@@ -35,7 +35,7 @@ const ConversionScreen = () => {
     if (mode === 'arabic-to-roman') {
       const num = parseInt(input, 10);
       if (isNaN(num)) {
-        setResult('Error: Ingresa un número válido');
+        setResult(texts.errors.invalidNumber);
         setResultType('error');
         return;
       }
@@ -273,11 +273,11 @@ const ConversionScreen = () => {
 
   const renderInfoBox = () => (
     <View style={styles.card}>
-      <Text style={styles.cardTitle}>💡 Consejo</Text>
+      <Text style={styles.cardTitle}>{texts.conversion.tips.title}</Text>
       <Text style={styles.infoText}>
         {mode === 'arabic-to-roman'
-          ? 'Los números romanos se construyen combinando símbolos. La posición es importante.'
-          : 'Los números romanos deben estar en mayúsculas. Por ejemplo: VIII, XIV, MCMXC.'}
+          ? texts.conversion.tips.arabic
+          : texts.conversion.tips.roman}
       </Text>
     </View>
   );
@@ -288,13 +288,11 @@ const ConversionScreen = () => {
         style={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.title}>Convertidor</Text>
+        <Text style={styles.title}>{texts.conversion.title}</Text>
 
         {/* Mode Selection */}
         <View style={styles.modeContainer}>
-          <Text style={styles.modeLabel}>
-            Selecciona el tipo de conversión:
-          </Text>
+          <Text style={styles.modeLabel}>{texts.conversion.modeLabel}</Text>
           <View style={styles.modeButtonContainer}>
             <Pressable
               style={[
@@ -316,7 +314,7 @@ const ConversionScreen = () => {
                     : styles.modeButtonTextInactive,
                 ]}
               >
-                Árabe → Romano
+                {texts.conversion.modes.arabicToRoman}
               </Text>
             </Pressable>
             <Pressable
@@ -339,7 +337,7 @@ const ConversionScreen = () => {
                     : styles.modeButtonTextInactive,
                 ]}
               >
-                Romano → Árabe
+                {texts.conversion.modes.romanToArabic}
               </Text>
             </Pressable>
           </View>
@@ -349,12 +347,16 @@ const ConversionScreen = () => {
         <View style={styles.inputSection}>
           <Text style={styles.label}>
             {mode === 'arabic-to-roman'
-              ? 'Ingresa un número (1-3999)'
-              : 'Ingresa un número romano'}
+              ? texts.conversion.inputLabel.arabic
+              : texts.conversion.inputLabel.roman}
           </Text>
           <TextInput
             style={styles.input}
-            placeholder={mode === 'arabic-to-roman' ? 'Ej: 42' : 'Ej: XLII'}
+            placeholder={
+              mode === 'arabic-to-roman'
+                ? texts.conversion.placeholders.arabic
+                : texts.conversion.placeholders.roman
+            }
             placeholderTextColor={colors.lightText}
             value={input}
             onChangeText={setInput}
@@ -365,10 +367,14 @@ const ConversionScreen = () => {
         {/* Buttons */}
         <View style={styles.buttonContainer}>
           <Pressable style={styles.convertButton} onPress={handleConvert}>
-            <Text style={styles.buttonText}>Convertir</Text>
+            <Text style={styles.buttonText}>
+              {texts.conversion.buttons.convert}
+            </Text>
           </Pressable>
           <Pressable style={styles.clearButton} onPress={handleClear}>
-            <Text style={styles.clearButtonText}>Limpiar</Text>
+            <Text style={styles.clearButtonText}>
+              {texts.conversion.buttons.clear}
+            </Text>
           </Pressable>
         </View>
 
@@ -383,7 +389,9 @@ const ConversionScreen = () => {
             ]}
           >
             <Text style={styles.resultLabel}>
-              {resultType === 'success' ? 'Resultado' : 'Aviso'}
+              {resultType === 'success'
+                ? texts.conversion.results.labelSuccess
+                : texts.conversion.results.labelError}
             </Text>
             <Text
               style={[
