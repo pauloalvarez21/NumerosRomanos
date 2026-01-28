@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
@@ -9,14 +9,17 @@ import { useColors } from '../styles/commonStyles';
 
 const Tab = createBottomTabNavigator();
 
-interface TabIconProps {
-  icon: string;
-  color: string;
-  size: number;
-}
-
-function TabIcon({ icon, color, size }: TabIconProps) {
-  return <Text style={{ fontSize: size, color }}>{icon}</Text>;
+function TabIcon({ focused, source }: { focused: boolean; source: any }) {
+  return (
+    <Image
+      source={source}
+      style={{
+        width: focused ? 80 : 55,
+        height: focused ? 80 : 55,
+      }}
+      resizeMode="contain"
+    />
+  );
 }
 
 const RootNavigator = () => {
@@ -33,13 +36,13 @@ const RootNavigator = () => {
             backgroundColor: colors.background,
             borderTopColor: colors.border,
             borderTopWidth: 1,
-            paddingBottom: 4,
+            paddingBottom: 2,
             paddingTop: 8,
-            height: 60,
+            height: 100,
           },
           tabBarLabelStyle: {
             fontSize: 12,
-            fontWeight: '500',
+            fontFamily: 'ChowFun-Regular',
             marginBottom: 4,
           },
         }}
@@ -49,8 +52,11 @@ const RootNavigator = () => {
           component={HomeScreen}
           options={{
             tabBarLabel: 'Inicio',
-            tabBarIcon: ({ color, size }) => (
-              <TabIcon icon="🏠" color={color} size={size} />
+            tabBarIcon: ({ focused }) => (
+              <TabIcon
+                focused={focused}
+                source={require('../assets/images/home.png')}
+              />
             ),
           }}
         />
@@ -59,8 +65,11 @@ const RootNavigator = () => {
           component={ConversionScreen}
           options={{
             tabBarLabel: 'Convertidor',
-            tabBarIcon: ({ color, size }) => (
-              <TabIcon icon="🔄" color={color} size={size} />
+            tabBarIcon: ({ focused }) => (
+              <TabIcon
+                focused={focused}
+                source={require('../assets/images/conversion.png')}
+              />
             ),
           }}
         />
@@ -69,8 +78,11 @@ const RootNavigator = () => {
           component={InfoScreen}
           options={{
             tabBarLabel: 'Información',
-            tabBarIcon: ({ color, size }) => (
-              <TabIcon icon="ℹ️" color={color} size={size} />
+            tabBarIcon: ({ focused }) => (
+              <TabIcon
+                focused={focused}
+                source={require('../assets/images/info.png')}
+              />
             ),
           }}
         />

@@ -23,6 +23,8 @@ target 'RomanosApp' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
   post_install do |installer|
     react_native_post_install(
       installer,
@@ -30,5 +32,6 @@ target 'RomanosApp' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end

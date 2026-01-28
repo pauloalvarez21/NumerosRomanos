@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { useColors } from '../styles/commonStyles';
+import Card from '../components/Card';
 
 const InfoScreen = () => {
   const colors = useColors();
@@ -20,10 +21,10 @@ const InfoScreen = () => {
     },
     title: {
       fontSize: 28,
-      fontWeight: '700',
       color: colors.primary,
       marginBottom: 24,
       textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
     },
     section: {
       marginBottom: 16,
@@ -39,7 +40,7 @@ const InfoScreen = () => {
     },
     sectionHeaderText: {
       fontSize: 16,
-      fontWeight: '600',
+      fontFamily: 'ChowFun-Regular',
       color: colors.primary,
       flex: 1,
     },
@@ -89,18 +90,6 @@ const InfoScreen = () => {
     tableCellValue: {
       color: colors.text,
     },
-    exampleBox: {
-      backgroundColor: colors.border,
-      padding: 12,
-      borderRadius: 8,
-      marginVertical: 8,
-    },
-    exampleTitle: {
-      fontSize: 13,
-      fontWeight: '600',
-      color: colors.primary,
-      marginBottom: 6,
-    },
     exampleText: {
       fontSize: 13,
       color: colors.text,
@@ -108,25 +97,13 @@ const InfoScreen = () => {
       lineHeight: 20,
       marginBottom: 4,
     },
-    ruleBox: {
-      backgroundColor: colors.border,
-      paddingVertical: 10,
-      paddingHorizontal: 12,
-      borderRadius: 8,
-      marginVertical: 6,
-      borderLeftWidth: 4,
-      borderLeftColor: colors.secondary,
-    },
-    ruleTitle: {
-      fontSize: 13,
-      fontWeight: '600',
-      color: colors.primary,
-      marginBottom: 4,
-    },
     ruleText: {
       fontSize: 13,
       color: colors.text,
       lineHeight: 20,
+    },
+    exampleContent: {
+      gap: 4,
     },
   });
 
@@ -139,12 +116,11 @@ const InfoScreen = () => {
   const sections: SectionItem[] = [
     {
       id: 'symbols',
-      title: '📍 Símbolos Básicos',
+      title: 'Símbolos Básicos',
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Los números romanos utilizan siete símbolos fundamentales. Cada uno
-            tiene un valor numérico específico:
+            Los números romanos se basan en siete símbolos con valores fijos:
           </Text>
           <View style={styles.tableContainer}>
             <View style={[styles.tableRow, styles.tableRowHeader]}>
@@ -191,167 +167,158 @@ const InfoScreen = () => {
     },
     {
       id: 'rules',
-      title: '⚙️ Reglas de Formación',
+      title: 'Reglas de Formación',
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Los números romanos se forman siguiendo reglas específicas:
+            Para escribir números romanos correctamente, sigue estas reglas:
           </Text>
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>1. Adición</Text>
+          <Card variant="rule" title="Adición (Suma)">
             <Text style={styles.ruleText}>
-              Los símbolos se suman cuando están juntos en orden descendente.
+              Si una letra está a la derecha de otra de igual o mayor valor, se
+              suma.
             </Text>
-            <View style={styles.exampleBox}>
-              <Text style={styles.exampleText}>VI = 5 + 1 = 6</Text>
-              <Text style={styles.exampleText}>XII = 10 + 1 + 1 = 12</Text>
-            </View>
-          </View>
+            <Card variant="example">
+              <View style={styles.exampleContent}>
+                <Text style={styles.exampleText}>VI = 5 + 1 = 6</Text>
+                <Text style={styles.exampleText}>XII = 10 + 1 + 1 = 12</Text>
+              </View>
+            </Card>
+          </Card>
 
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>2. Sustracción</Text>
+          <Card variant="rule" title="Sustracción (Resta)">
             <Text style={styles.ruleText}>
-              Un símbolo menor antes de uno mayor se resta. Solo se usan: I, X,
-              C en sustracción.
+              Si una letra de menor valor está a la izquierda de una mayor, se
+              resta.
             </Text>
-            <View style={styles.exampleBox}>
-              <Text style={styles.exampleText}>IV = 5 - 1 = 4</Text>
-              <Text style={styles.exampleText}>IX = 10 - 1 = 9</Text>
-              <Text style={styles.exampleText}>XL = 50 - 10 = 40</Text>
-              <Text style={styles.exampleText}>XC = 100 - 10 = 90</Text>
-              <Text style={styles.exampleText}>CD = 500 - 100 = 400</Text>
-              <Text style={styles.exampleText}>CM = 1000 - 100 = 900</Text>
-            </View>
-          </View>
+            <Card variant="example">
+              <View style={styles.exampleContent}>
+                <Text style={styles.exampleText}>IV = 5 - 1 = 4</Text>
+                <Text style={styles.exampleText}>IX = 10 - 1 = 9</Text>
+                <Text style={styles.exampleText}>XL = 50 - 10 = 40</Text>
+                <Text style={styles.exampleText}>XC = 100 - 10 = 90</Text>
+                <Text style={styles.exampleText}>CD = 500 - 100 = 400</Text>
+                <Text style={styles.exampleText}>CM = 1000 - 100 = 900</Text>
+              </View>
+            </Card>
+          </Card>
 
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>3. Repetición</Text>
+          <Card variant="rule" title="Repetición">
             <Text style={styles.ruleText}>
-              I, X, C, M pueden repetirse hasta tres veces consecutivas. V, L, D
-              no se repiten.
+              Los símbolos I, X, C y M pueden repetirse hasta tres veces
+              seguidas. V, L y D no se repiten.
             </Text>
-            <View style={styles.exampleBox}>
-              <Text style={styles.exampleText}>III = 3 (no IIII)</Text>
-              <Text style={styles.exampleText}>XXX = 30 (no XXXX)</Text>
-              <Text style={styles.exampleText}>MMM = 3000</Text>
-            </View>
-          </View>
+            <Card variant="example">
+              <View style={styles.exampleContent}>
+                <Text style={styles.exampleText}>III = 3 (no IIII)</Text>
+                <Text style={styles.exampleText}>XXX = 30 (no XXXX)</Text>
+                <Text style={styles.exampleText}>MMM = 3000</Text>
+              </View>
+            </Card>
+          </Card>
         </View>
       ),
     },
     {
       id: 'examples',
-      title: '📚 Ejemplos Prácticos',
+      title: 'Ejemplos Comunes',
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Aquí hay ejemplos de cómo se escriben números comunes en romanos:
+            Aquí tienes algunos ejemplos útiles:
           </Text>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleTitle}>Números del 1 al 20:</Text>
-            <Text style={styles.exampleText}>I=1, II=2, III=3, IV=4, V=5</Text>
-            <Text style={styles.exampleText}>
-              VI=6, VII=7, VIII=8, IX=9, X=10
-            </Text>
-            <Text style={styles.exampleText}>
-              XI=11, XII=12, XIII=13, XIV=14, XV=15
-            </Text>
-            <Text style={styles.exampleText}>
-              XVI=16, XVII=17, XVIII=18, XIX=19, XX=20
-            </Text>
-          </View>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleTitle}>Decenas (10s):</Text>
-            <Text style={styles.exampleText}>
-              X=10, XX=20, XXX=30, XL=40, L=50
-            </Text>
-            <Text style={styles.exampleText}>
-              LX=60, LXX=70, LXXX=80, XC=90
-            </Text>
-          </View>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleTitle}>Números Grandes:</Text>
-            <Text style={styles.exampleText}>
-              C=100, CC=200, CCC=300, CD=400, D=500
-            </Text>
-            <Text style={styles.exampleText}>
-              DC=600, DCC=700, DCCC=800, CM=900, M=1000
-            </Text>
-          </View>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleTitle}>Años Modernos:</Text>
-            <Text style={styles.exampleText}>1984 = MCMLXXXIV</Text>
-            <Text style={styles.exampleText}>2024 = MMXXIV</Text>
-            <Text style={styles.exampleText}>2025 = MMXXV</Text>
-          </View>
+          <Card variant="example" title="Números del 1 al 20">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>
+                I=1, II=2, III=3, IV=4, V=5
+              </Text>
+              <Text style={styles.exampleText}>
+                VI=6, VII=7, VIII=8, IX=9, X=10
+              </Text>
+              <Text style={styles.exampleText}>
+                XI=11, XII=12, XIII=13, XIV=14, XV=15
+              </Text>
+              <Text style={styles.exampleText}>
+                XVI=16, XVII=17, XVIII=18, XIX=19, XX=20
+              </Text>
+            </View>
+          </Card>
+          <Card variant="example" title="Decenas">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>
+                X=10, XX=20, XXX=30, XL=40, L=50
+              </Text>
+              <Text style={styles.exampleText}>
+                LX=60, LXX=70, LXXX=80, XC=90
+              </Text>
+            </View>
+          </Card>
+          <Card variant="example" title="Centenas y Millares">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>
+                C=100, CC=200, CCC=300, CD=400, D=500
+              </Text>
+              <Text style={styles.exampleText}>
+                DC=600, DCC=700, DCCC=800, CM=900, M=1000
+              </Text>
+            </View>
+          </Card>
+          <Card variant="example" title="Años">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>1984 = MCMLXXXIV</Text>
+              <Text style={styles.exampleText}>2024 = MMXXIV</Text>
+              <Text style={styles.exampleText}>2025 = MMXXV</Text>
+            </View>
+          </Card>
         </View>
       ),
     },
     {
       id: 'history',
-      title: '🏛️ Historia y Uso',
+      title: 'Historia',
       content: (
         <View>
           <Text style={styles.sectionText}>
-            Los números romanos se originaron en la antigua Roma hace más de
-            2000 años. Fueron el sistema numérico estándar de Europa occidental
-            hasta el siglo XIV.
+            El sistema de numeración romana se originó en la antigua Roma y se
+            utilizó en todo el Imperio Romano.
           </Text>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleTitle}>Usos Modernos:</Text>
-            <Text style={styles.exampleText}>• Relojes y esferas</Text>
-            <Text style={styles.exampleText}>
-              • Números de capítulos en libros
-            </Text>
-            <Text style={styles.exampleText}>
-              • Fechas en películas y obras de arte
-            </Text>
-            <Text style={styles.exampleText}>
-              • Eventos especiales (Superbowl, Olimpiadas)
-            </Text>
-            <Text style={styles.exampleText}>
-              • Numeración de listas en documentos formales
-            </Text>
-          </View>
+          <Card variant="example" title="Usos Modernos">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>• Relojes</Text>
+              <Text style={styles.exampleText}>• Capítulos de libros</Text>
+              <Text style={styles.exampleText}>
+                • Eventos deportivos (Super Bowl)
+              </Text>
+              <Text style={styles.exampleText}>• Nombres de reyes y papas</Text>
+            </View>
+          </Card>
           <Text style={styles.sectionText}>
-            Aunque los números arábigos reemplazaron a los romanos para la
-            mayoría de propósitos matemáticos y científicos, los números romanos
-            siguen siendo importantes en contextos históricos, educativos y
-            ceremoniales.
+            Aunque hoy usamos el sistema arábigo, los números romanos siguen
+            presentes en nuestra cultura.
           </Text>
         </View>
       ),
     },
     {
       id: 'tips',
-      title: '💡 Consejos Útiles',
+      title: 'Consejos',
       content: (
         <View>
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>Para Escribir Números Romanos:</Text>
+          <Card variant="rule" title="Escritura">
             <Text style={styles.ruleText}>
-              • Siempre comienza con los símbolos de mayor valor • Agrupa los
-              símbolos iguales • Usa la sustracción solo en casos específicos
-              (4, 9, 40, 90, 400, 900)
+              Descompón el número en millares, centenas, decenas y unidades.
             </Text>
-          </View>
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>Para Leer Números Romanos:</Text>
+          </Card>
+          <Card variant="rule" title="Lectura">
             <Text style={styles.ruleText}>
-              • Lee de izquierda a derecha • Si un símbolo menor está antes de
-              uno mayor, se resta • Si un símbolo menor está después de uno
-              mayor (o igual), se suma
+              Lee de izquierda a derecha, sumando o restando según la posición.
             </Text>
-          </View>
-          <View style={styles.ruleBox}>
-            <Text style={styles.ruleTitle}>Rango Válido:</Text>
+          </Card>
+          <Card variant="rule" title="Rango">
             <Text style={styles.ruleText}>
-              Esta aplicación trabaja con números del 1 al 3999. Los números
-              romanos pueden escribirse hasta números más grandes usando una
-              línea encima (vincularia), pero esto es poco común en el uso
-              moderno.
+              Esta calculadora soporta números del 1 al 3999.
             </Text>
-          </View>
+          </Card>
         </View>
       ),
     },

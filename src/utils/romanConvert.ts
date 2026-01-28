@@ -27,7 +27,7 @@ const romanValues = [
 export const arabicToRoman = (num: number): string => {
   // Validate input
   if (!Number.isInteger(num) || num <= 0 || num >= 4000) {
-    return 'Error: Número debe estar entre 1 y 3999';
+    return 'Error: El número debe estar entre 1 y 3999';
   }
 
   let result = '';
@@ -53,12 +53,12 @@ export const romanToArabic = (roman: string): number | string => {
   const cleanRoman = roman.trim().toUpperCase();
 
   if (cleanRoman.length === 0) {
-    return 'Error: Ingresa un número romano válido';
+    return 'Error: Ingresa un número romano';
   }
 
   // Validate that input contains only valid Roman numeral characters
   if (!/^[IVXLCDM]+$/.test(cleanRoman)) {
-    return 'Error: Contiene caracteres inválidos. Solo usa I, V, X, L, C, D, M';
+    return 'Error: Caracteres inválidos';
   }
 
   let result = 0;
@@ -80,7 +80,7 @@ export const romanToArabic = (roman: string): number | string => {
 
   // Validate the result (should be between 1 and 3999)
   if (result <= 0 || result >= 4000) {
-    return 'Error: El número romano resultante está fuera del rango válido';
+    return 'Error: Resultado fuera de rango (1-3999)';
   }
 
   return result;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { useColors } from '../styles/commonStyles';
+import Card from '../components/Card';
 
 const HomeScreen = () => {
   const colors = useColors();
@@ -17,26 +18,26 @@ const HomeScreen = () => {
     },
     title: {
       fontSize: 32,
-      fontWeight: '700',
       color: colors.primary,
       marginBottom: 8,
       textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
     },
     subtitle: {
       fontSize: 16,
       color: colors.lightText,
       textAlign: 'center',
       marginBottom: 32,
-      fontStyle: 'italic',
+      fontFamily: 'ChowFun-Regular',
     },
     section: {
       marginBottom: 28,
     },
     sectionTitle: {
       fontSize: 18,
-      fontWeight: '700',
       color: colors.primary,
       marginBottom: 12,
+      fontFamily: 'ChowFun-Regular',
     },
     sectionText: {
       fontSize: 14,
@@ -47,35 +48,18 @@ const HomeScreen = () => {
       color: colors.secondary,
       fontWeight: '600',
     },
-    exampleBox: {
-      backgroundColor: colors.border,
-      borderLeftColor: colors.secondary,
-      borderLeftWidth: 4,
-      padding: 12,
-      borderRadius: 8,
-      marginVertical: 8,
-    },
     exampleText: {
       fontSize: 13,
       color: colors.text,
       fontFamily: 'monospace',
     },
-    featureBox: {
-      backgroundColor: colors.border,
-      padding: 16,
-      borderRadius: 12,
-      marginVertical: 8,
-    },
-    featureTitle: {
-      fontSize: 15,
-      fontWeight: '600',
-      color: colors.primary,
-      marginBottom: 6,
-    },
     featureText: {
       fontSize: 13,
       color: colors.text,
       lineHeight: 20,
+    },
+    exampleContent: {
+      gap: 4,
     },
   });
 
@@ -97,24 +81,21 @@ const HomeScreen = () => {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Características</Text>
-          <View style={styles.featureBox}>
-            <Text style={styles.featureTitle}>🔄 Conversión Bidireccional</Text>
+          <Card variant="feature" title="🔄 Conversión Bidireccional">
             <Text style={styles.featureText}>
               Convierte números árabes (1-3999) a romanos y viceversa.
             </Text>
-          </View>
-          <View style={styles.featureBox}>
-            <Text style={styles.featureTitle}>📚 Información Detallada</Text>
+          </Card>
+          <Card variant="feature" title="📚 Información Detallada">
             <Text style={styles.featureText}>
               Aprende cómo funcionan los números romanos con ejemplos prácticos.
             </Text>
-          </View>
-          <View style={styles.featureBox}>
-            <Text style={styles.featureTitle}>✨ Interfaz Intuitiva</Text>
+          </Card>
+          <Card variant="feature" title="✨ Interfaz Intuitiva">
             <Text style={styles.featureText}>
               Diseño simple y fácil de usar para todas las edades.
             </Text>
-          </View>
+          </Card>
         </View>
 
         <View style={styles.section}>
@@ -124,21 +105,25 @@ const HomeScreen = () => {
             la antigua Roma. Se utilizan letras mayúsculas para representar
             valores numéricos específicos.
           </Text>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleText}>I = 1 V = 5 X = 10</Text>
-            <Text style={styles.exampleText}>L = 50 C = 100 D = 500</Text>
-            <Text style={styles.exampleText}>M = 1000</Text>
-          </View>
+          <Card variant="example">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>I = 1 V = 5 X = 10</Text>
+              <Text style={styles.exampleText}>L = 50 C = 100 D = 500</Text>
+              <Text style={styles.exampleText}>M = 1000</Text>
+            </View>
+          </Card>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Ejemplos Rápidos</Text>
-          <View style={styles.exampleBox}>
-            <Text style={styles.exampleText}>3 = III</Text>
-            <Text style={styles.exampleText}>10 = X</Text>
-            <Text style={styles.exampleText}>49 = XLIX</Text>
-            <Text style={styles.exampleText}>2024 = MMXXIV</Text>
-          </View>
+          <Card variant="example">
+            <View style={styles.exampleContent}>
+              <Text style={styles.exampleText}>3 = III</Text>
+              <Text style={styles.exampleText}>10 = X</Text>
+              <Text style={styles.exampleText}>49 = XLIX</Text>
+              <Text style={styles.exampleText}>2024 = MMXXIV</Text>
+            </View>
+          </Card>
         </View>
 
         <View style={styles.section}>

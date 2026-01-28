@@ -72,10 +72,10 @@ const ConversionScreen = () => {
     },
     title: {
       fontSize: 28,
-      fontWeight: '700',
       color: colors.primary,
       marginBottom: 24,
       textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
     },
     modeContainer: {
       marginBottom: 28,
@@ -109,8 +109,8 @@ const ConversionScreen = () => {
     },
     modeButtonText: {
       fontSize: 12,
-      fontWeight: '600',
       textAlign: 'center',
+      fontFamily: 'ChowFun-Regular',
     },
     modeButtonTextActive: {
       color: '#FFFFFF',
@@ -165,13 +165,13 @@ const ConversionScreen = () => {
     },
     buttonText: {
       fontSize: 15,
-      fontWeight: '600',
       color: '#FFFFFF',
+      fontFamily: 'ChowFun-Regular',
     },
     clearButtonText: {
       fontSize: 15,
-      fontWeight: '600',
       color: colors.text,
+      fontFamily: 'ChowFun-Regular',
     },
     resultContainer: {
       paddingHorizontal: 20,
@@ -191,7 +191,7 @@ const ConversionScreen = () => {
     },
     resultLabel: {
       fontSize: 12,
-      fontWeight: '600',
+      fontFamily: 'ChowFun-Regular',
       color: colors.lightText,
       marginBottom: 8,
       textTransform: 'uppercase',
@@ -199,7 +199,7 @@ const ConversionScreen = () => {
     },
     resultValue: {
       fontSize: 32,
-      fontWeight: '700',
+      fontFamily: 'ChowFun-Regular',
       textAlign: 'center',
     },
     resultValueSuccess: {
@@ -209,24 +209,42 @@ const ConversionScreen = () => {
       color: colors.error,
       fontSize: 14,
     },
-    infoBox: {
-      backgroundColor: colors.border,
-      padding: 16,
-      borderRadius: 12,
-      marginTop: 16,
-    },
-    infoTitle: {
-      fontSize: 13,
-      fontWeight: '600',
-      color: colors.primary,
-      marginBottom: 6,
-    },
     infoText: {
       fontSize: 13,
       color: colors.text,
       lineHeight: 20,
     },
+    card: {
+      backgroundColor: colors.background,
+      borderRadius: 12,
+      padding: 16,
+      marginBottom: 16,
+      borderWidth: 1,
+      borderColor: colors.border,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.05,
+      shadowRadius: 4,
+      elevation: 2,
+    },
+    cardTitle: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: colors.primary,
+      marginBottom: 8,
+    },
   });
+
+  const renderInfoBox = () => (
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>💡 Consejo</Text>
+      <Text style={styles.infoText}>
+        {mode === 'arabic-to-roman'
+          ? 'Los números romanos se construyen combinando símbolos. La posición es importante.'
+          : 'Los números romanos deben estar en mayúsculas. Por ejemplo: VIII, XIV, MCMXC.'}
+      </Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
@@ -345,14 +363,7 @@ const ConversionScreen = () => {
         )}
 
         {/* Info Box */}
-        <View style={styles.infoBox}>
-          <Text style={styles.infoTitle}>💡 Consejo</Text>
-          <Text style={styles.infoText}>
-            {mode === 'arabic-to-roman'
-              ? 'Los números romanos se construyen combinando símbolos. La posición es importante.'
-              : 'Los números romanos deben estar en mayúsculas. Por ejemplo: VIII, XIV, MCMXC.'}
-          </Text>
-        </View>
+        {renderInfoBox()}
       </ScrollView>
     </View>
   );
