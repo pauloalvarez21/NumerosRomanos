@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
 
     factory.startReactNative(
-      withModuleName: "Romanos",
+      withModuleName: "Romanos App",
       in: window,
       launchOptions: launchOptions
     )

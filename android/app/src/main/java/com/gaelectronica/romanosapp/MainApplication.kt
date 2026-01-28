@@ -1,4 +1,4 @@
-package com.romanos
+package com.gaelectronica.romanosapp
 
 import android.app.Application
 import com.facebook.react.PackageList
