@@ -3,6 +3,15 @@ import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { useColors } from '../styles/commonStyles';
 import Card from '../components/Card';
 import { texts } from '../utils/i18n';
+import {
+  BannerAd,
+  BannerAdSize,
+  TestIds,
+} from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : 'ca-app-pub-2899284558865652/4679996788';
 
 const HomeScreen = () => {
   const colors = useColors();
@@ -99,6 +108,15 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <BannerAd
+        unitId={adUnitId}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        requestOptions={{
+          networkExtras: {
+            collapsible: 'bottom',
+          },
+        }}
+      />
       <ScrollView style={styles.scrollContent}>
         <Text style={styles.title}>{texts.title}</Text>
         <Text style={styles.subtitle}>{texts.subtitle}</Text>

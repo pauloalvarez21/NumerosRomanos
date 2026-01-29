@@ -12,6 +12,15 @@ import {
 import { useColors } from '../styles/commonStyles';
 import { arabicToRoman, romanToArabic } from '../utils/romanConvert';
 import { texts } from '../utils/i18n';
+import {
+  BannerAd,
+  BannerAdSize,
+  TestIds,
+} from 'react-native-google-mobile-ads';
+
+const adUnitId = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : 'ca-app-pub-2899284558865652/4679996788';
 
 type ConversionMode = 'arabic-to-roman' | 'roman-to-arabic';
 
@@ -284,6 +293,15 @@ const ConversionScreen = () => {
 
   return (
     <View style={styles.container}>
+      <BannerAd
+        unitId={adUnitId}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        requestOptions={{
+          networkExtras: {
+            collapsible: 'bottom',
+          },
+        }}
+      />
       <ScrollView
         style={styles.scrollContent}
         showsVerticalScrollIndicator={false}
