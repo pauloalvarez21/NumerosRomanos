@@ -10,13 +10,28 @@ import { texts } from '../utils/i18n';
 
 const Tab = createBottomTabNavigator();
 
-function TabIcon({ focused, source }: { focused: boolean; source: any }) {
+interface TabIconProps {
+  focused: boolean;
+  source: any;
+  baseWidth?: number;
+  baseHeight?: number;
+}
+
+function TabIcon({
+  focused,
+  source,
+  baseWidth = 50,
+  baseHeight = 50,
+}: TabIconProps) {
+  // Escala al 120% cuando está seleccionado
+  const scale = focused ? 1.2 : 1;
+
   return (
     <Image
       source={source}
       style={{
-        width: focused ? 80 : 55,
-        height: focused ? 80 : 55,
+        width: baseWidth * scale,
+        height: baseHeight * scale,
       }}
       resizeMode="contain"
     />
@@ -57,6 +72,8 @@ const RootNavigator = () => {
               <TabIcon
                 focused={focused}
                 source={require('../assets/images/home.png')}
+                baseWidth={50}
+                baseHeight={50}
               />
             ),
           }}
@@ -70,6 +87,8 @@ const RootNavigator = () => {
               <TabIcon
                 focused={focused}
                 source={require('../assets/images/conversion.png')}
+                baseWidth={120}
+                baseHeight={120}
               />
             ),
           }}
@@ -83,6 +102,8 @@ const RootNavigator = () => {
               <TabIcon
                 focused={focused}
                 source={require('../assets/images/info.png')}
+                baseWidth={150}
+                baseHeight={150}
               />
             ),
           }}
