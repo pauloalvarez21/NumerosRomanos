@@ -70,9 +70,23 @@ async function run() {
   console.log('💾 Guardando bundle ofuscado...');
   fs.writeFileSync(BUNDLE_PATH, obfuscatedResult.getObfuscatedCode());
 
-  console.log(
-    '✅ ¡Proceso completado con éxito! Ahora puedes compilar tu APK de release.',
-  );
+  if (platform === 'android') {
+    console.log(
+      '✅ ¡Proceso completado con éxito! Ahora puedes compilar tu APK de release.',
+    );
+  } else {
+    console.log('✅ ¡Bundle ofuscado generado en ios/main.jsbundle!');
+    console.log('\n⚠️  INSTRUCCIONES PARA IOS:');
+    console.log(
+      '   Para que Xcode use este archivo en lugar de generar uno nuevo (y sin ofuscar) al compilar,',
+    );
+    console.log(
+      '   debes asegurarte de que tu proyecto de Xcode esté configurado para usar el bundle offline',
+    );
+    console.log(
+      '   ("offline bundle") o arrastrar manualmente este main.jsbundle a los recursos de Xcode.',
+    );
+  }
 }
 
 run();

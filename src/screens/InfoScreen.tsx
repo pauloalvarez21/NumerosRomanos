@@ -315,6 +315,60 @@ const InfoScreen = () => {
       ),
     },
     {
+      id: 'extended',
+      title: texts.info.extended.title,
+      content: (
+        <View>
+          <Text style={styles.sectionText}>
+            {texts.info.extended.description}
+          </Text>
+          <View style={styles.tableContainer}>
+            <View style={[styles.tableRow, styles.tableRowHeader]}>
+              <Text style={[styles.tableCell, styles.tableCellLabel]}>
+                {texts.info.symbols.colSymbol}
+              </Text>
+              <Text style={[styles.tableCell, styles.tableCellLabel]}>
+                {texts.info.symbols.colValue}
+              </Text>
+            </View>
+            {[
+              { s: 'V', v: '5,000' },
+              { s: 'X', v: '10,000' },
+              { s: 'L', v: '50,000' },
+              { s: 'C', v: '100,000' },
+              { s: 'D', v: '500,000' },
+              { s: 'M', v: '1,000,000' },
+            ].map((item) => (
+              <View key={item.s} style={styles.tableRow}>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
+                  <View style={{ alignSelf: 'flex-start', borderTopWidth: 1.5, borderTopColor: colors.primary }}>
+                    <Text style={[styles.tableCellLabel, { fontSize: 14, lineHeight: 18 }]}>{item.s}</Text>
+                  </View>
+                </View>
+                <Text style={[styles.tableCell, styles.tableCellValue]}>{item.v}</Text>
+              </View>
+            ))}
+          </View>
+          <Card variant="example" title={texts.info.extended.examplesTitle}>
+            <View style={styles.exampleContent}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ borderTopWidth: 1, borderTopColor: colors.text, marginRight: 4 }}>
+                  <Text style={[styles.exampleText, { marginBottom: 0 }]}>V</Text>
+                </View>
+                <Text style={styles.exampleText}>DLV = 5,555</Text>
+              </View>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ borderTopWidth: 1, borderTopColor: colors.text, marginRight: 4 }}>
+                  <Text style={[styles.exampleText, { marginBottom: 0 }]}>X</Text>
+                </View>
+                <Text style={styles.exampleText}>CI = 10,101</Text>
+              </View>
+            </View>
+          </Card>
+        </View>
+      ),
+    },
+    {
       id: 'history',
       title: texts.info.history.title,
       content: (

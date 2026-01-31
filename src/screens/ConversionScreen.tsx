@@ -377,7 +377,14 @@ const ConversionScreen = () => {
             }
             placeholderTextColor={colors.lightText}
             value={input}
-            onChangeText={setInput}
+            onChangeText={(text) => {
+              if (mode === 'roman-to-arabic') {
+                setInput(text.toUpperCase().replace(/[^IVXLCDM]/g, ''));
+              } else {
+                setInput(text);
+              }
+            }}
+            autoCapitalize="characters"
             keyboardType={mode === 'arabic-to-roman' ? 'number-pad' : 'default'}
           />
         </View>

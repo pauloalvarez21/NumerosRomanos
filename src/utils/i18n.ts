@@ -166,6 +166,13 @@ export const texts = {
       bigNumbers: isEnglish ? 'Hundreds and Thousands' : 'Centenas y Millares',
       years: isEnglish ? 'Years' : 'Años',
     },
+    extended: {
+      title: isEnglish ? 'Extended Numbers (Vinculum)' : 'Números Extendidos (Vinculum)',
+      description: isEnglish
+        ? 'The standard system goes up to 3,999. For larger numbers, the "Vinculum" is used: a horizontal line over the symbol that multiplies its value by 1,000.'
+        : 'El sistema estándar llega hasta 3,999. Para números mayores, se usa el "Vinculum": una línea horizontal sobre el símbolo que multiplica su valor por 1,000.',
+      examplesTitle: isEnglish ? 'Large Examples' : 'Ejemplos Grandes',
+    },
     history: {
       title: isEnglish ? 'History' : 'Historia',
       description: isEnglish
