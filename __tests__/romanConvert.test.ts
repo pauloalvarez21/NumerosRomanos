@@ -2,7 +2,24 @@
  * Tests for Roman numeral conversion functions
  */
 
+// Mock react-native-localize to prevent TurboModuleRegistry error
+jest.mock('react-native-localize', () => ({
+  getLocales: () => [
+    {
+      countryCode: 'ES',
+      languageTag: 'es-ES',
+      languageCode: 'es',
+      isRTL: false,
+    },
+  ],
+  findBestAvailableLanguage: () => ({
+    languageTag: 'es-ES',
+    isRTL: false,
+  }),
+}));
+
 import { arabicToRoman, romanToArabic } from '../src/utils/romanConvert';
+import { texts } from '../src/utils/i18n';
 
 describe('Roman Numeral Conversion', () => {
   describe('arabicToRoman', () => {
@@ -53,9 +70,9 @@ describe('Roman Numeral Conversion', () => {
     });
 
     test('rejects invalid input', () => {
-      expect(arabicToRoman(0)).toContain('Error');
-      expect(arabicToRoman(4000)).toContain('Error');
-      expect(arabicToRoman(-5)).toContain('Error');
+      expect(arabicToRoman(0)).toBe(texts.errors.range);
+      expect(arabicToRoman(4000)).toBe(texts.errors.range);
+      expect(arabicToRoman(-5)).toBe(texts.errors.range);
     });
   });
 
@@ -104,9 +121,9 @@ describe('Roman Numeral Conversion', () => {
     });
 
     test('rejects invalid input', () => {
-      expect(romanToArabic('ABCD')).toContain('Error');
-      expect(romanToArabic('123')).toContain('Error');
-      expect(romanToArabic('')).toContain('Error');
+      expect(romanToArabic('ABCD')).toBe(texts.errors.invalidChars);
+      expect(romanToArabic('123')).toBe(texts.errors.invalidChars);
+      expect(romanToArabic('')).toBe(texts.errors.enterRoman);
     });
   });
 });

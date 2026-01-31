@@ -189,6 +189,14 @@ La aplicación detecta automáticamente el tema del sistema (claro/oscuro) y se 
 - [NUMBERS_GUIDE.md](NUMBERS_GUIDE.md) - Guía completa de uso
 - [DESARROLLO.md](DESARROLLO.md) - Guía de desarrollo
 
+## Ofuscador de Bundle
+
+A diferencia de Android, donde el script reemplaza el archivo y luego Gradle lo empaqueta automáticamente, en iOS el proceso es un poco diferente:
+
+Ejecutas npm run build:obfuscated:ios.
+Esto generará el archivo ios/main.jsbundle ofuscado.
+Para que Xcode use este archivo en lugar de generar uno nuevo (y sin ofuscar) al compilar, debes asegurarte de que tu proyecto de Xcode esté configurado para usar el bundle offline ("offline bundle") o arrastrar manualmente este main.jsbundle a los recursos de Xcode antes de archivar la app.
+
 ## 💡 Mejoras Futuras
 
 - Historial de conversiones
