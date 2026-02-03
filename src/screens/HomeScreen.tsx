@@ -31,7 +31,7 @@ const HomeScreen = () => {
       color: colors.primary,
       marginBottom: 8,
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     subtitle: {
       fontSize: 16,
@@ -46,7 +46,7 @@ const HomeScreen = () => {
       fontSize: 18,
       color: colors.primary,
       marginBottom: 12,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     sectionText: {
       fontSize: 14,
@@ -81,20 +81,20 @@ const HomeScreen = () => {
       color: '#666',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerSubtext: {
       fontSize: 11,
       color: '#999',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerVersion: {
       fontSize: 10,
       color: '#BBB',
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerLogo: {
       width: 150,

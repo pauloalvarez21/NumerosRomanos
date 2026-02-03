@@ -59,7 +59,7 @@ const RootNavigator = () => {
           tabBarLabelStyle: {
             fontSize: 12,
             marginBottom: 4,
-            fontFamily: 'ChowFun-Regular',
+            fontFamily: 'Inter-Regular',
           },
         }}
       >

@@ -86,7 +86,7 @@ const ConversionScreen = () => {
       color: colors.primary,
       marginBottom: 24,
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     modeContainer: {
       marginBottom: 28,
@@ -121,7 +121,7 @@ const ConversionScreen = () => {
     modeButtonText: {
       fontSize: 12,
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     modeButtonTextActive: {
       color: '#FFFFFF',
@@ -177,12 +177,12 @@ const ConversionScreen = () => {
     buttonText: {
       fontSize: 15,
       color: '#FFFFFF',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     clearButtonText: {
       fontSize: 15,
       color: colors.text,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     resultContainer: {
       paddingHorizontal: 20,
@@ -202,7 +202,7 @@ const ConversionScreen = () => {
     },
     resultLabel: {
       fontSize: 12,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
       color: colors.lightText,
       marginBottom: 8,
       textTransform: 'uppercase',
@@ -210,7 +210,7 @@ const ConversionScreen = () => {
     },
     resultValue: {
       fontSize: 32,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
       textAlign: 'center',
     },
     resultValueSuccess: {
@@ -255,20 +255,20 @@ const ConversionScreen = () => {
       color: '#666',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerSubtext: {
       fontSize: 11,
       color: '#999',
       textAlign: 'center',
       marginBottom: 8,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerVersion: {
       fontSize: 10,
       color: '#BBB',
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     footerLogo: {
       width: 150,

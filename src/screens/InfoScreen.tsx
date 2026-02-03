@@ -41,7 +41,7 @@ const InfoScreen = () => {
       color: colors.primary,
       marginBottom: 24,
       textAlign: 'center',
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     section: {
       marginBottom: 16,
@@ -59,7 +59,7 @@ const InfoScreen = () => {
       fontSize: 16,
       color: colors.primary,
       flex: 1,
-      fontFamily: 'ChowFun-Regular',
+      fontFamily: 'Inter-Regular',
     },
     expandIcon: {
       fontSize: 18,
