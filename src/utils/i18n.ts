@@ -214,8 +214,8 @@ export const texts = {
   },
   footer: {
     rights: isEnglish
-      ? '© 2026 Gaelectronica - All rights reserved'
-      : '© 2026 Gaelectronica - Todos los derechos reservados',
+      ? '© 2024 - {{year}} Gaelectronica - All rights reserved'
+      : '© 2024 - {{year}} Gaelectronica - Todos los derechos reservados',
     subtext: isEnglish
       ? 'Roman numeral conversion tool'
       : 'Herramienta para conversión de números romanos',

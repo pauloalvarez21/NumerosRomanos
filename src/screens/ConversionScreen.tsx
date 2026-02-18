@@ -32,6 +32,7 @@ const ConversionScreen = () => {
   const [resultType, setResultType] = useState<'success' | 'error' | null>(
     null,
   );
+  const currentYear = new Date().getFullYear();
 
   const handleConvert = () => {
     if (!input.trim()) {
@@ -435,7 +436,9 @@ const ConversionScreen = () => {
         {renderInfoBox()}
         {/* Footer */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerText}>
+            {texts.footer.rights.replace('{{year}}', currentYear.toString())}
+          </Text>
           <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
           <Text style={styles.footerVersion}>v1.0.0</Text>
           <Image

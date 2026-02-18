@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { useColors } from '../styles/commonStyles';
 import Card from '../components/Card';
@@ -13,10 +13,12 @@ const adUnitId = __DEV__
   ? TestIds.ADAPTIVE_BANNER
   : 'ca-app-pub-2899284558865652/4679996788';
 
+const currentYear = new Date().getFullYear();
+
 const HomeScreen = () => {
   const colors = useColors();
 
-  const styles = StyleSheet.create({
+  const styles = useMemo(() => StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: colors.background,
@@ -104,7 +106,7 @@ const HomeScreen = () => {
       resizeMode: 'contain',
       borderRadius: 30,
     },
-  });
+  }), [colors]);
 
   return (
     <View style={styles.container}>
@@ -179,7 +181,9 @@ const HomeScreen = () => {
         </View>
         {/* Footer */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerText}>
+            {texts.footer.rights.replace('{{year}}', currentYear.toString())}
+          </Text>
           <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
           <Text style={styles.footerVersion}>v1.0.0</Text>
           <Image

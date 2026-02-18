@@ -25,6 +25,7 @@ const InfoScreen = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(
     'symbols',
   );
+  const currentYear = new Date().getFullYear();
 
   const styles = StyleSheet.create({
     container: {
@@ -450,7 +451,9 @@ const InfoScreen = () => {
         ))}
         {/* Footer */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>{texts.footer.rights}</Text>
+          <Text style={styles.footerText}>
+            {texts.footer.rights.replace('{{year}}', currentYear.toString())}
+            </Text>
           <Text style={styles.footerSubtext}>{texts.footer.subtext}</Text>
           <Text style={styles.footerVersion}>v1.0.0</Text>
           <Image
