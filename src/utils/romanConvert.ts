@@ -92,7 +92,7 @@ export const romanToArabic = (roman: string): number | string => {
  * @param char - A single Roman numeral character
  * @returns The numeric value
  */
-const getValue = (char: string): number => {
+export const getValue = (char: string): number => {
   switch (char) {
     case 'I':
       return 1;
